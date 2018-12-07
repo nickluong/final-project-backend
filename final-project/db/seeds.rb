@@ -6,5 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: 'obiwan', password_digest: 'dolphin1')
-User.create(username: 'anakin', password_digest: 'dolphin2')
+User.destroy_all 
+Session.destroy_all 
+
+User.create(username: 'obiwan', password: 'dolphin1')
+User.create(username: 'anakin', password: 'dolphin2')
+
+Session.create()
+
+UserSession.create(user: User.first, session: Session.first)
+UserSession.create(user: User.second, session: Session.first)
+
